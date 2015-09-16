@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://turncommerce.com/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://turncommerce.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://turncommerce.com/">
+      <s:element name="GetInstructions">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetInstructionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInstructionsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitInformation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="firstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="emailAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SubmitInformationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubmitInformationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetInstructionsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInstructions" />
+  </wsdl:message>
+  <wsdl:message name="GetInstructionsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInstructionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SubmitInformationSoapIn">
+    <wsdl:part name="parameters" element="tns:SubmitInformation" />
+  </wsdl:message>
+  <wsdl:message name="SubmitInformationSoapOut">
+    <wsdl:part name="parameters" element="tns:SubmitInformationResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SubmitResumeSoap">
+    <wsdl:operation name="GetInstructions">
+      <wsdl:input message="tns:GetInstructionsSoapIn" />
+      <wsdl:output message="tns:GetInstructionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SubmitInformation">
+      <wsdl:input message="tns:SubmitInformationSoapIn" />
+      <wsdl:output message="tns:SubmitInformationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SubmitResumeSoap" type="tns:SubmitResumeSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetInstructions">
+      <soap:operation soapAction="http://turncommerce.com/GetInstructions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitInformation">
+      <soap:operation soapAction="http://turncommerce.com/SubmitInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SubmitResumeSoap12" type="tns:SubmitResumeSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetInstructions">
+      <soap12:operation soapAction="http://turncommerce.com/GetInstructions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SubmitInformation">
+      <soap12:operation soapAction="http://turncommerce.com/SubmitInformation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SubmitResume">
+    <wsdl:port name="SubmitResumeSoap" binding="tns:SubmitResumeSoap">
+      <soap:address location="http://www.turncommerce.com/dotnettest/SubmitResume.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SubmitResumeSoap12" binding="tns:SubmitResumeSoap12">
+      <soap12:address location="http://www.turncommerce.com/dotnettest/SubmitResume.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
